@@ -1,0 +1,6 @@
+VERSION:3 SOURCE_TIMESTAMP:4E42A0D9
+NODE:I LEVEL:0 LINE:23 "D:\Programs\codevision\inc\mega8535.h"
+NODE:M LEVEL:0 LINE:24 "boton"
+NODE:C LEVEL:0 LINE:25 "tabla7segmentos -> FLASH"
+NODE:V LEVEL:0 LINE:26 "var1 -> R5"
+NODE:F LEVEL:0 LINE:30 "main(void)"
