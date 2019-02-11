@@ -1,33 +1,7 @@
-/*******************************************************
-This program was created by the CodeWizardAVR V3.34 
-Automatic Program Generator
-© Copyright 1998-2018 Pavel Haiduc, HP InfoTech s.r.l.
-http://www.hpinfotech.com
-
-Project : 
-Version : 
-Date    : 24/01/2019
-Author  : 
-Company : 
-Comments: 
-
-
-Chip type               : ATmega8535L
-Program type            : Application
-AVR Core Clock frequency: 1.000000 MHz
-Memory model            : Small
-External RAM size       : 0
-Data Stack size         : 128
-*******************************************************/
-
 #include <mega8535.h>
-
-// Declare your global variables here
 
 void main(void)
 {
-// Declare your local variables here
-
 // Input/Output Ports initialization
 // Port A initialization
 // Function: Bit7=In Bit6=In Bit5=In Bit4=In Bit3=In Bit2=In Bit1=In Bit0=In 
@@ -130,6 +104,7 @@ SPCR=(0<<SPIE) | (0<<SPE) | (0<<DORD) | (0<<MSTR) | (0<<CPOL) | (0<<CPHA) | (0<<
 // TWI disabled
 TWCR=(0<<TWEA) | (0<<TWSTA) | (0<<TWSTO) | (0<<TWEN) | (0<<TWIE);
 
+// Main Program
 while (1)
       {
         PORTD=PINB;
