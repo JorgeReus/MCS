@@ -1,32 +1,8 @@
-/*******************************************************
-This program was created by the CodeWizardAVR V3.34 
-Automatic Program Generator
-© Copyright 1998-2018 Pavel Haiduc, HP InfoTech s.r.l.
-http://www.hpinfotech.com
-
-Project : 
-Version : 
-Date    : 02/02/2019
-Author  : 
-Company : 
-Comments: 
-
-
-Chip type               : ATmega8535L
-Program type            : Application
-AVR Core Clock frequency: 1.000000 MHz
-Memory model            : Small
-External RAM size       : 0
-Data Stack size         : 128
-*******************************************************/
-
 #include <mega8535.h>
 
-// Declare your global variables here
 
 void main(void)
 {
-// Declare your local variables here
 unsigned char variable;
 unsigned char variableA;
 const char tabla7segmentos [10]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7c,0x07,0x7f,0x6f};
@@ -137,7 +113,7 @@ while (1)
       {
        variable=PIND&0x0f; //Enmascaramos los 4 bits menos significativos
         variableA=PINC&0x0f;
-        //del puerto A ya que los demás no interesan.
+        //del puerto A ya que los demas no interesan.
 
         if (variable<10)
 

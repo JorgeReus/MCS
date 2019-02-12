@@ -1,34 +1,8 @@
-/*******************************************************
-This program was created by the CodeWizardAVR V3.34 
-Automatic Program Generator
-© Copyright 1998-2018 Pavel Haiduc, HP InfoTech s.r.l.
-http://www.hpinfotech.com
-
-Project : 
-Version : 
-Date    : 30/01/2019
-Author  : 
-Company : 
-Comments: 
-
-
-Chip type               : ATmega8535L
-Program type            : Application
-AVR Core Clock frequency: 1.000000 MHz
-Memory model            : Small
-External RAM size       : 0
-Data Stack size         : 128
-*******************************************************/
-
 #include <mega8535.h>
 #include <delay.h>
 
-// Declare your global variables here
-
 void main(void)
 {
-// Declare your local variables here
-
 // Input/Output Ports initialization
 // Port A initialization
 // Function: Bit7=In Bit6=In Bit5=In Bit4=In Bit3=In Bit2=In Bit1=In Bit0=In 
@@ -136,6 +110,6 @@ while (1)
       // Place your code here
       PORTB++; //incrementa valor de puerto   
       PORTD--; //incrementa valor de puerto
-      delay_ms(250); //retardo que se genera para visualizar la información
+      delay_ms(250); //retardo que se genera para visualizar info
       }
 }
