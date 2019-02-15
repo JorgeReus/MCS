@@ -1,0 +1,4 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Protoboard}{2}{section.1}
+\contentsline {section}{\numberline {2}C\IeC {\'o}digo}{3}{section.2}
+\contentsline {section}{\numberline {3}Circuito}{5}{section.3}
