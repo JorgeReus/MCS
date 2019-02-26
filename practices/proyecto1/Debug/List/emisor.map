@@ -1,0 +1,29 @@
+RAM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+contador_reset                                                                    0x00E0       4
+contador_0                                                                        0x00E4       4
+contador_1                                                                        0x00E8       4
+contador_2                                                                        0x00EC       4
+contador_3                                                                        0x00F0       4
+
+EEPROM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+
+Register Allocation
+Variable                                                                          Register  Size
+------------------------------------------------------------------------------------------------
+botonp                                                                            R2.0      1bit
+botona                                                                            R2.1      1bit
+contador                                                                          R4,R5        2
+down_flag                                                                         R2.2      1bit
+flag_contador_0                                                                   R2.3      1bit
+flag_contador_1                                                                   R2.4      1bit
+flag_contador_2                                                                   R2.5      1bit
+flag_contador_3                                                                   R2.6      1bit
+
+FLASH Allocation [words]
+Function                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+main                                                                              0x0004A    318
