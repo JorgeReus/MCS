@@ -1,0 +1,4 @@
+arriba:50-70 -> cuadro:1ms ocupa 16
+abajo:110-130 -> cuadro:1ms ocupa 9
+izquierda:185-205 -> cuadro:1ms ocupa 5
+derecha:510-530 -> cuadro:1ms ocupa 2
