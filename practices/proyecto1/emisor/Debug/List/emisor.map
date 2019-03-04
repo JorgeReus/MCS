@@ -1,0 +1,36 @@
+RAM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+contador_arr                                                                      0x00E0       4
+contador_abj                                                                      0x00E4       4
+contador_izq                                                                      0x00E8       4
+contador_der                                                                      0x00EC       4
+
+EEPROM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+
+Register Allocation
+Variable                                                                          Register  Size
+------------------------------------------------------------------------------------------------
+b_arr_p                                                                           R2.0      1bit
+b_arr_a                                                                           R2.1      1bit
+b_abj_p                                                                           R2.2      1bit
+b_abj_a                                                                           R2.3      1bit
+b_izq_p                                                                           R2.4      1bit
+b_izq_a                                                                           R2.5      1bit
+b_der_p                                                                           R2.6      1bit
+b_der_a                                                                           R2.7      1bit
+flag_arr                                                                          R3.0      1bit
+flag_abj                                                                          R3.1      1bit
+flag_izq                                                                          R3.2      1bit
+flag_der                                                                          R3.3      1bit
+flag_contador_arr                                                                 R3.4      1bit
+flag_contador_abj                                                                 R3.5      1bit
+flag_contador_izq                                                                 R3.6      1bit
+flag_contador_der                                                                 R3.7      1bit
+
+FLASH Allocation [words]
+Function                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+main                                                                              0x00046    333
