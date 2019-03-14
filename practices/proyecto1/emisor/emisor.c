@@ -1,25 +1,3 @@
-/*******************************************************
-This program was created by the CodeWizardAVR V3.34 
-Automatic Program Generator
-© Copyright 1998-2018 Pavel Haiduc, HP InfoTech s.r.l.
-http://www.hpinfotech.com
-
-Project : 
-Version : 
-Date    : 28/02/2019
-Author  : 
-Company : 
-Comments: 
-
-
-Chip type               : ATmega8535L
-Program type            : Application
-AVR Core Clock frequency: 1.000000 MHz
-Memory model            : Small
-External RAM size       : 0
-Data Stack size         : 128
-*******************************************************/
-
 #include <mega8535.h>
 #include <delay.h>
 #define b_arr PINB.0
