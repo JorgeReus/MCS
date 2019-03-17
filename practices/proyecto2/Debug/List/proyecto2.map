@@ -1,0 +1,29 @@
+RAM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+
+EEPROM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+memory                                                                            0x0000      10
+
+Register Allocation
+Variable                                                                          Register  Size
+------------------------------------------------------------------------------------------------
+b_clr_and_save_p                                                                  R2.0      1bit
+b_clr_and_save_a                                                                  R2.1      1bit
+b_start_p                                                                         R2.2      1bit
+b_start_a                                                                         R2.3      1bit
+b_der_p                                                                           R2.4      1bit
+b_der_a                                                                           R2.5      1bit
+b_izq_p                                                                           R2.6      1bit
+b_izq_a                                                                           R2.7      1bit
+b_arr_p                                                                           R3.0      1bit
+b_arr_a                                                                           R3.1      1bit
+b_abj_p                                                                           R3.2      1bit
+b_abj_a                                                                           R3.3      1bit
+
+FLASH Allocation [words]
+Function                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+main                                                                              0x00046    151
