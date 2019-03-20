@@ -195,12 +195,10 @@ TWCR=(0<<TWEA) | (0<<TWSTA) | (0<<TWSTO) | (0<<TWEN) | (0<<TWIE);
                     b_stop_a = 0;   
                 } else {      
                     b_stop_a = 1;
-                }
-                /*     
+                }    
                 if (((b_stop_p==1) && (b_stop_a==1)) || ((b_stop_p==0) && (b_stop_a==1)) || ((b_stop_p==1) && (b_stop_a==0)) ) {
                     break;  
                 } 
-                */
                 b_stop_p=b_stop_a;   
             }  
             PORTA = 0;
@@ -258,7 +256,7 @@ void send_data(int instr) {
                     contador_abj = 0;
                 }
             }   
-        } else if (instr == INST_ARR) {
+        } else if (instr == INST_IZQ) {
             if (flag_contador_izq == 0) {
                 if (contador_izq < 15) {
                     contador_izq++;

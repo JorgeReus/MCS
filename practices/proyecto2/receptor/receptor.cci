@@ -1,0 +1,9 @@
+VERSION:3 SOURCE_TIMESTAMP:4E63ABE2
+NODE:I LEVEL:0 LINE:23 "D:\Programs\codevision\inc\mega8535.h"
+NODE:I LEVEL:0 LINE:24 "D:\Programs\codevision\inc\delay.h"
+NODE:M LEVEL:0 LINE:26 "boton"
+NODE:V LEVEL:0 LINE:27 "boton_p -> R2.0"
+NODE:V LEVEL:0 LINE:28 "boton_a -> R2.1"
+NODE:V LEVEL:0 LINE:29 "contador -> RAM:????"
+NODE:V LEVEL:0 LINE:30 "i -> RAM:????"
+NODE:F LEVEL:0 LINE:32 "main(void)"

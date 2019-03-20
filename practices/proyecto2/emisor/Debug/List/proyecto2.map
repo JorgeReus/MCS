@@ -28,5 +28,5 @@ b_abj_a                                                                         
 FLASH Allocation [words]
 Function                                                                          Address   Size
 ------------------------------------------------------------------------------------------------
-main                                                                              0x00050    188
-send_data                                                                         0x0010C    215
+main                                                                              0x00050    198
+send_data                                                                         0x00116    215

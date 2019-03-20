@@ -1122,7 +1122,7 @@ __START_OF_CODE:
 __REG_BIT_VARS:
 	.DW  0x0000
 
-_0x39:
+_0x40:
 	.DB  0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0
 	.DB  0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0
 	.DB  0x0,0x0,0x0,0x0
@@ -1371,12 +1371,12 @@ _0x3:
 	RJMP _0x6
 ; 0000 0061              b_clr_and_save_a = 0;
 	CLT
-	RJMP _0x6F
+	RJMP _0x76
 ; 0000 0062          } else {
 _0x6:
 ; 0000 0063              b_clr_and_save_a = 1;
 	SET
-_0x6F:
+_0x76:
 	BLD  R2,1
 ; 0000 0064          }
 ; 0000 0065          if((b_clr_and_save_p == 1) && (b_clr_and_save_a == 0)) {// Cambio de flanco de 1 a 0
@@ -1421,12 +1421,12 @@ _0x10:
 	RJMP _0x13
 ; 0000 0073                    b_arr_a = 0;
 	CLT
-	RJMP _0x70
+	RJMP _0x77
 ; 0000 0074                } else {
 _0x13:
 ; 0000 0075                    b_arr_a = 1;
 	SET
-_0x70:
+_0x77:
 	BLD  R3,3
 ; 0000 0076                }
 ; 0000 0077                if((b_arr_p == 1) && (b_arr_a == 0))// Cambio de flanco de 1 a 0
@@ -1458,12 +1458,12 @@ _0x15:
 	RJMP _0x18
 ; 0000 0082                    b_abj_a = 0;
 	CLT
-	RJMP _0x71
+	RJMP _0x78
 ; 0000 0083                } else {
 _0x18:
 ; 0000 0084                    b_abj_a = 1;
 	SET
-_0x71:
+_0x78:
 	BLD  R3,5
 ; 0000 0085                }
 ; 0000 0086                if((b_abj_p == 1) && (b_abj_a == 0))// Cambio de flanco de 1 a 0
@@ -1496,12 +1496,12 @@ _0x1A:
 	RJMP _0x1D
 ; 0000 0092                    b_izq_a = 0;
 	CLT
-	RJMP _0x72
+	RJMP _0x79
 ; 0000 0093                } else {
 _0x1D:
 ; 0000 0094                    b_izq_a = 1;
 	SET
-_0x72:
+_0x79:
 	BLD  R3,1
 ; 0000 0095                }
 ; 0000 0096                if((b_izq_p == 1) && (b_izq_a == 0))// Cambio de flanco de 1 a 0
@@ -1534,12 +1534,12 @@ _0x1F:
 	RJMP _0x22
 ; 0000 00A2                    b_der_a = 0;
 	CLT
-	RJMP _0x73
+	RJMP _0x7A
 ; 0000 00A3                } else {
 _0x22:
 ; 0000 00A4                    b_der_a = 1;
 	SET
-_0x73:
+_0x7A:
 	BLD  R2,7
 ; 0000 00A5                }
 ; 0000 00A6                if((b_der_p == 1) && (b_der_a == 0))// Cambio de flanco de 1 a 0
@@ -1593,12 +1593,12 @@ _0x8:
 	RJMP _0x2A
 ; 0000 00BA             b_start_a = 0;
 	CLT
-	RJMP _0x74
+	RJMP _0x7B
 ; 0000 00BB          } else {
 _0x2A:
 ; 0000 00BC             b_start_a = 1;
 	SET
-_0x74:
+_0x7B:
 	BLD  R2,3
 ; 0000 00BD          }
 ; 0000 00BE          if ((b_start_p==1)&&(b_start_a==0)) {
@@ -1627,64 +1627,76 @@ _0x32:
 	RJMP _0x34
 ; 0000 00C3                     b_stop_a = 0;
 	CLT
-	RJMP _0x75
+	RJMP _0x7C
 ; 0000 00C4                 } else {
 _0x34:
 ; 0000 00C5                     b_stop_a = 1;
 	SET
-_0x75:
+_0x7C:
 	BLD  R2,5
 ; 0000 00C6                 }
-; 0000 00C7                 /*
-; 0000 00C8                 if (((b_stop_p==1) && (b_stop_a==1)) || ((b_stop_p==0) && (b_stop_a==1)) || ((b_stop_p==1) && (b_stop_a= ...
-; 0000 00C9                     break;
-; 0000 00CA                 }
-; 0000 00CB                 */
-; 0000 00CC                 b_stop_p=b_stop_a;
+; 0000 00C7                 if (((b_stop_p==1) && (b_stop_a==1)) || ((b_stop_p==0) && (b_stop_a==1)) ) {
+	SBRS R2,4
+	RJMP _0x37
+	SBRC R2,5
+	RJMP _0x39
+_0x37:
+	SBRC R2,4
+	RJMP _0x3A
+	SBRC R2,5
+	RJMP _0x39
+_0x3A:
+	RJMP _0x36
+_0x39:
+; 0000 00C8                     break;
+	RJMP _0x33
+; 0000 00C9                 }
+; 0000 00CA                 b_stop_p=b_stop_a;
+_0x36:
 	BST  R2,5
 	BLD  R2,4
-; 0000 00CD             }
+; 0000 00CB             }
 	RCALL SUBOPT_0x2
 	RJMP _0x32
 _0x33:
-; 0000 00CE             PORTA = 0;
+; 0000 00CC             PORTA = 0;
 	LDI  R30,LOW(0)
 	OUT  0x1B,R30
-; 0000 00CF             PORTC.1 = 0;
+; 0000 00CD             PORTC.1 = 0;
 	CBI  0x15,1
-; 0000 00D0         }
-; 0000 00D1         b_start_p=b_start_a;
+; 0000 00CE         }
+; 0000 00CF         b_start_p=b_start_a;
 _0x2C:
 	BST  R2,3
 	BLD  R2,2
-; 0000 00D2     }
+; 0000 00D0     }
 	RJMP _0x3
-; 0000 00D3 }
-_0x38:
-	RJMP _0x38
+; 0000 00D1 }
+_0x3F:
+	RJMP _0x3F
 ; .FEND
 ;
 ;
 ;void send_data(int instr) {
-; 0000 00D6 void send_data(int instr) {
+; 0000 00D4 void send_data(int instr) {
 _send_data:
 ; .FSTART _send_data
 	PUSH R15
-; 0000 00D7     bit flag_contador_arr = 0;
-; 0000 00D8     unsigned long contador_arr = 0;
-; 0000 00D9     bit flag_contador_abj = 0;
-; 0000 00DA     unsigned long contador_abj = 0;
-; 0000 00DB     bit flag_contador_izq = 0;
-; 0000 00DC     unsigned long contador_izq = 0;
-; 0000 00DD     bit flag_contador_der = 0;
-; 0000 00DE     unsigned long contador_der = 0;
-; 0000 00DF     unsigned long contador = 0;
-; 0000 00E0     while (contador < 10000) {
+; 0000 00D5     bit flag_contador_arr = 0;
+; 0000 00D6     unsigned long contador_arr = 0;
+; 0000 00D7     bit flag_contador_abj = 0;
+; 0000 00D8     unsigned long contador_abj = 0;
+; 0000 00D9     bit flag_contador_izq = 0;
+; 0000 00DA     unsigned long contador_izq = 0;
+; 0000 00DB     bit flag_contador_der = 0;
+; 0000 00DC     unsigned long contador_der = 0;
+; 0000 00DD     unsigned long contador = 0;
+; 0000 00DE     while (contador < 10000) {
 	SBIW R28,20
 	LDI  R24,20
 	__GETWRN 22,23,0
-	LDI  R30,LOW(_0x39*2)
-	LDI  R31,HIGH(_0x39*2)
+	LDI  R30,LOW(_0x40*2)
+	LDI  R31,HIGH(_0x40*2)
 	RCALL __INITLOCB
 	RCALL __SAVELOCR2
 	MOVW R16,R26
@@ -1699,255 +1711,255 @@ _send_data:
 ;	contador_der -> Y+6
 ;	contador -> Y+2
 	CLR  R15
-_0x3A:
+_0x41:
 	__GETD2S 2
 	__CPD2N 0x2710
 	BRLO PC+2
-	RJMP _0x3C
-; 0000 00E1         if (instr == INST_ARR) {
+	RJMP _0x43
+; 0000 00DF         if (instr == INST_ARR) {
 	LDI  R30,LOW(1)
 	LDI  R31,HIGH(1)
 	RCALL SUBOPT_0x5
-	BRNE _0x3D
-; 0000 00E2             if (flag_contador_arr == 0) {
+	BRNE _0x44
+; 0000 00E0             if (flag_contador_arr == 0) {
 	SBRC R15,0
-	RJMP _0x3E
-; 0000 00E3                 if (contador_arr < 150) {
+	RJMP _0x45
+; 0000 00E1                 if (contador_arr < 150) {
 	RCALL SUBOPT_0x6
 	__CPD2N 0x96
-	BRSH _0x3F
-; 0000 00E4                     contador_arr++;
+	BRSH _0x46
+; 0000 00E2                     contador_arr++;
 	RCALL SUBOPT_0x7
 	RCALL SUBOPT_0x8
 	RCALL SUBOPT_0x9
-; 0000 00E5                     PORTA.0 = 1;
+; 0000 00E3                     PORTA.0 = 1;
 	SBI  0x1B,0
-; 0000 00E6                 } else {
-	RJMP _0x42
-_0x3F:
-; 0000 00E7                     flag_contador_arr = 1;
+; 0000 00E4                 } else {
+	RJMP _0x49
+_0x46:
+; 0000 00E5                     flag_contador_arr = 1;
 	SET
 	BLD  R15,0
-; 0000 00E8                     contador_arr = 150;
+; 0000 00E6                     contador_arr = 150;
 	__GETD1N 0x96
 	RCALL SUBOPT_0x9
-; 0000 00E9                 }
-_0x42:
-; 0000 00EA             } else {
-	RJMP _0x43
-_0x3E:
-; 0000 00EB                 if (contador_arr > 0) {
+; 0000 00E7                 }
+_0x49:
+; 0000 00E8             } else {
+	RJMP _0x4A
+_0x45:
+; 0000 00E9                 if (contador_arr > 0) {
 	RCALL SUBOPT_0x6
 	RCALL __CPD02
-	BRSH _0x44
-; 0000 00EC                     contador_arr--;
+	BRSH _0x4B
+; 0000 00EA                     contador_arr--;
 	RCALL SUBOPT_0x7
 	RCALL SUBOPT_0xA
 	RCALL SUBOPT_0x9
-; 0000 00ED                     PORTA.0 = 0;
+; 0000 00EB                     PORTA.0 = 0;
 	CBI  0x1B,0
-; 0000 00EE                 } else {
-	RJMP _0x47
-_0x44:
-; 0000 00EF                     flag_contador_arr = 0;
+; 0000 00EC                 } else {
+	RJMP _0x4E
+_0x4B:
+; 0000 00ED                     flag_contador_arr = 0;
 	CLT
 	BLD  R15,0
-; 0000 00F0                     contador_arr = 0;
+; 0000 00EE                     contador_arr = 0;
 	LDI  R30,LOW(0)
 	__CLRD1S 18
-; 0000 00F1                 }
-_0x47:
-; 0000 00F2             }
-_0x43:
-; 0000 00F3         } else if (instr == INST_ABJ) {
-	RJMP _0x48
-_0x3D:
+; 0000 00EF                 }
+_0x4E:
+; 0000 00F0             }
+_0x4A:
+; 0000 00F1         } else if (instr == INST_ABJ) {
+	RJMP _0x4F
+_0x44:
 	LDI  R30,LOW(2)
 	LDI  R31,HIGH(2)
 	RCALL SUBOPT_0x5
-	BRNE _0x49
-; 0000 00F4             if (flag_contador_abj == 0) {
+	BRNE _0x50
+; 0000 00F2             if (flag_contador_abj == 0) {
 	SBRC R15,1
-	RJMP _0x4A
-; 0000 00F5                 if (contador_abj < 60) {
+	RJMP _0x51
+; 0000 00F3                 if (contador_abj < 60) {
 	RCALL SUBOPT_0xB
 	__CPD2N 0x3C
-	BRSH _0x4B
-; 0000 00F6                     contador_abj++;
+	BRSH _0x52
+; 0000 00F4                     contador_abj++;
 	RCALL SUBOPT_0xC
 	RCALL SUBOPT_0x8
 	RCALL SUBOPT_0xD
-; 0000 00F7                     PORTA.0 = 1;
+; 0000 00F5                     PORTA.0 = 1;
 	SBI  0x1B,0
-; 0000 00F8                 } else {
-	RJMP _0x4E
-_0x4B:
-; 0000 00F9                     flag_contador_abj = 1;
+; 0000 00F6                 } else {
+	RJMP _0x55
+_0x52:
+; 0000 00F7                     flag_contador_abj = 1;
 	SET
 	BLD  R15,1
-; 0000 00FA                     contador_abj = 60;
+; 0000 00F8                     contador_abj = 60;
 	__GETD1N 0x3C
 	RCALL SUBOPT_0xD
-; 0000 00FB                 }
-_0x4E:
-; 0000 00FC             } else {
-	RJMP _0x4F
-_0x4A:
-; 0000 00FD                 if (contador_abj > 0) {
+; 0000 00F9                 }
+_0x55:
+; 0000 00FA             } else {
+	RJMP _0x56
+_0x51:
+; 0000 00FB                 if (contador_abj > 0) {
 	RCALL SUBOPT_0xB
 	RCALL __CPD02
-	BRSH _0x50
-; 0000 00FE                     contador_abj--;
+	BRSH _0x57
+; 0000 00FC                     contador_abj--;
 	RCALL SUBOPT_0xC
 	RCALL SUBOPT_0xA
 	RCALL SUBOPT_0xD
-; 0000 00FF                     PORTA.0 = 0;
+; 0000 00FD                     PORTA.0 = 0;
 	CBI  0x1B,0
-; 0000 0100                 } else {
-	RJMP _0x53
-_0x50:
-; 0000 0101                     flag_contador_abj = 0;
+; 0000 00FE                 } else {
+	RJMP _0x5A
+_0x57:
+; 0000 00FF                     flag_contador_abj = 0;
 	CLT
 	BLD  R15,1
-; 0000 0102                     contador_abj = 0;
+; 0000 0100                     contador_abj = 0;
 	LDI  R30,LOW(0)
 	__CLRD1S 14
-; 0000 0103                 }
-_0x53:
-; 0000 0104             }
-_0x4F:
-; 0000 0105         } else if (instr == INST_IZQ) {
-	RJMP _0x54
-_0x49:
+; 0000 0101                 }
+_0x5A:
+; 0000 0102             }
+_0x56:
+; 0000 0103         } else if (instr == INST_IZQ) {
+	RJMP _0x5B
+_0x50:
 	LDI  R30,LOW(3)
 	LDI  R31,HIGH(3)
 	RCALL SUBOPT_0x5
-	BRNE _0x55
-; 0000 0106             if (flag_contador_izq == 0) {
+	BRNE _0x5C
+; 0000 0104             if (flag_contador_izq == 0) {
 	SBRC R15,2
-	RJMP _0x56
-; 0000 0107                 if (contador_izq < 15) {
+	RJMP _0x5D
+; 0000 0105                 if (contador_izq < 15) {
 	RCALL SUBOPT_0xE
 	__CPD2N 0xF
-	BRSH _0x57
-; 0000 0108                     contador_izq++;
+	BRSH _0x5E
+; 0000 0106                     contador_izq++;
 	RCALL SUBOPT_0xF
 	RCALL SUBOPT_0x8
 	RCALL SUBOPT_0x10
-; 0000 0109                     PORTA.0 = 1;
+; 0000 0107                     PORTA.0 = 1;
 	SBI  0x1B,0
-; 0000 010A                 } else {
-	RJMP _0x5A
-_0x57:
-; 0000 010B                     flag_contador_izq = 1;
+; 0000 0108                 } else {
+	RJMP _0x61
+_0x5E:
+; 0000 0109                     flag_contador_izq = 1;
 	SET
 	BLD  R15,2
-; 0000 010C                     contador_izq = 15;
+; 0000 010A                     contador_izq = 15;
 	__GETD1N 0xF
 	RCALL SUBOPT_0x10
-; 0000 010D                 }
-_0x5A:
-; 0000 010E             } else {
-	RJMP _0x5B
-_0x56:
-; 0000 010F                 if (contador_izq > 0) {
+; 0000 010B                 }
+_0x61:
+; 0000 010C             } else {
+	RJMP _0x62
+_0x5D:
+; 0000 010D                 if (contador_izq > 0) {
 	RCALL SUBOPT_0xE
 	RCALL __CPD02
-	BRSH _0x5C
-; 0000 0110                     contador_izq--;
+	BRSH _0x63
+; 0000 010E                     contador_izq--;
 	RCALL SUBOPT_0xF
 	RCALL SUBOPT_0xA
 	RCALL SUBOPT_0x10
-; 0000 0111                     PORTA.0 = 0;
+; 0000 010F                     PORTA.0 = 0;
 	CBI  0x1B,0
-; 0000 0112                 } else {
-	RJMP _0x5F
-_0x5C:
-; 0000 0113                     flag_contador_izq = 0;
+; 0000 0110                 } else {
+	RJMP _0x66
+_0x63:
+; 0000 0111                     flag_contador_izq = 0;
 	CLT
 	BLD  R15,2
-; 0000 0114                     contador_izq = 0;
+; 0000 0112                     contador_izq = 0;
 	LDI  R30,LOW(0)
 	__CLRD1S 10
-; 0000 0115                 }
-_0x5F:
-; 0000 0116             }
-_0x5B:
-; 0000 0117         } else if (instr == INST_DER) {
-	RJMP _0x60
-_0x55:
+; 0000 0113                 }
+_0x66:
+; 0000 0114             }
+_0x62:
+; 0000 0115         } else if (instr == INST_DER) {
+	RJMP _0x67
+_0x5C:
 	LDI  R30,LOW(4)
 	LDI  R31,HIGH(4)
 	RCALL SUBOPT_0x5
-	BRNE _0x61
-; 0000 0118             if (flag_contador_der == 0) {
+	BRNE _0x68
+; 0000 0116             if (flag_contador_der == 0) {
 	SBRC R15,3
-	RJMP _0x62
-; 0000 0119                 if (contador_der < 1) {
+	RJMP _0x69
+; 0000 0117                 if (contador_der < 1) {
 	RCALL SUBOPT_0x11
 	__CPD2N 0x1
-	BRSH _0x63
-; 0000 011A                     contador_der++;
+	BRSH _0x6A
+; 0000 0118                     contador_der++;
 	RCALL SUBOPT_0x12
 	RCALL SUBOPT_0x8
 	RCALL SUBOPT_0x13
-; 0000 011B                     PORTA.0 = 1;
+; 0000 0119                     PORTA.0 = 1;
 	SBI  0x1B,0
-; 0000 011C                 } else {
-	RJMP _0x66
-_0x63:
-; 0000 011D                     flag_contador_der = 1;
+; 0000 011A                 } else {
+	RJMP _0x6D
+_0x6A:
+; 0000 011B                     flag_contador_der = 1;
 	SET
 	BLD  R15,3
-; 0000 011E                     contador_der = 1;
+; 0000 011C                     contador_der = 1;
 	__GETD1N 0x1
 	RCALL SUBOPT_0x13
-; 0000 011F                 }
-_0x66:
-; 0000 0120             } else {
-	RJMP _0x67
-_0x62:
-; 0000 0121                 if (contador_der > 0) {
+; 0000 011D                 }
+_0x6D:
+; 0000 011E             } else {
+	RJMP _0x6E
+_0x69:
+; 0000 011F                 if (contador_der > 0) {
 	RCALL SUBOPT_0x11
 	RCALL __CPD02
-	BRSH _0x68
-; 0000 0122                     contador_der--;
+	BRSH _0x6F
+; 0000 0120                     contador_der--;
 	RCALL SUBOPT_0x12
 	RCALL SUBOPT_0xA
 	RCALL SUBOPT_0x13
-; 0000 0123                     PORTA.0 = 0;
+; 0000 0121                     PORTA.0 = 0;
 	CBI  0x1B,0
-; 0000 0124                 } else {
-	RJMP _0x6B
-_0x68:
-; 0000 0125                     flag_contador_der = 0;
+; 0000 0122                 } else {
+	RJMP _0x72
+_0x6F:
+; 0000 0123                     flag_contador_der = 0;
 	CLT
 	BLD  R15,3
-; 0000 0126                     contador_der = 0;
+; 0000 0124                     contador_der = 0;
 	LDI  R30,LOW(0)
 	__CLRD1S 6
-; 0000 0127                 }
-_0x6B:
-; 0000 0128             }
-_0x67:
-; 0000 0129         } else {
-	RJMP _0x6C
-_0x61:
-; 0000 012A             PORTA.4 = 0;
+; 0000 0125                 }
+_0x72:
+; 0000 0126             }
+_0x6E:
+; 0000 0127         } else {
+	RJMP _0x73
+_0x68:
+; 0000 0128             PORTA.4 = 0;
 	CBI  0x1B,4
-; 0000 012B         }
-_0x6C:
-_0x60:
-_0x54:
-_0x48:
-; 0000 012C         contador++;
+; 0000 0129         }
+_0x73:
+_0x67:
+_0x5B:
+_0x4F:
+; 0000 012A         contador++;
 	__GETD1S 2
 	RCALL SUBOPT_0x8
 	__PUTD1S 2
-; 0000 012D     }
-	RJMP _0x3A
-_0x3C:
-; 0000 012E }
+; 0000 012B     }
+	RJMP _0x41
+_0x43:
+; 0000 012C }
 	RCALL __LOADLOCR2
 	ADIW R28,22
 	POP  R15

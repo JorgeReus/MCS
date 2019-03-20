@@ -195,12 +195,10 @@ TWCR=(0<<TWEA) | (0<<TWSTA) | (0<<TWSTO) | (0<<TWEN) | (0<<TWIE);
                     b_stop_a = 0;   
                 } else {      
                     b_stop_a = 1;
-                }
-                /*     
-                if (((b_stop_p==1) && (b_stop_a==1)) || ((b_stop_p==0) && (b_stop_a==1)) || ((b_stop_p==1) && (b_stop_a==0)) ) {
+                }    
+                if (((b_stop_p==1) && (b_stop_a==1)) || ((b_stop_p==0) && (b_stop_a==1)) ) {
                     break;  
                 } 
-                */
                 b_stop_p=b_stop_a;   
             }  
             PORTA = 0;
