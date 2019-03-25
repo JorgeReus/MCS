@@ -179,6 +179,7 @@ TWCR=(0<<TWEA) | (0<<TWSTA) | (0<<TWSTO) | (0<<TWEN) | (0<<TWIE);
             } 
             
         }
+        delay_ms(40);
         b_clr_and_save_p=b_clr_and_save_a;
          
         /* Empezar */ 
@@ -203,6 +204,7 @@ TWCR=(0<<TWEA) | (0<<TWSTA) | (0<<TWSTO) | (0<<TWEN) | (0<<TWIE);
             }  
             PORTA = 0;
             PORTC.1 = 0;
+            delay_ms(40);
         } 
         b_start_p=b_start_a;     
     }
