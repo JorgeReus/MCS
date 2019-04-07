@@ -1,0 +1,46 @@
+RAM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+tabla7seg                                                                         0x00E0      20
+bc                                                                                0x00F4       2
+j1c1                                                                              0x00F6       2
+j1c2                                                                              0x00F8       2
+j2c1                                                                              0x00FA       2
+j2c2                                                                              0x00FC       2
+filj1                                                                             0x00FE       2
+filj2                                                                             0x0100       2
+contador                                                                          0x0102       2
+bdaj1                                                                             0x0104       2
+bdpj1                                                                             0x0106       2
+biaj1                                                                             0x0108       2
+bipj1                                                                             0x010A       2
+bdaj2                                                                             0x010C       2
+bdpj2                                                                             0x010E       2
+biaj2                                                                             0x0110       2
+bipj2                                                                             0x0112       2
+
+EEPROM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+
+Register Allocation
+Variable                                                                          Register  Size
+------------------------------------------------------------------------------------------------
+puntaje_p1                                                                        R4,R5        2
+puntaje_p2                                                                        R6,R7        2
+fila                                                                              R8,R9        2
+col                                                                               R10,R11      2
+bf                                                                                R12,R13      2
+
+FLASH Allocation [words]
+Function                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+main                                                                              0x0006F     90
+fila_cambio                                                                       0x000C9     30
+cambiar_columna                                                                   0x000E7     42
+validar_derecha_jugador1                                                          0x00111     41
+validar_izquierda_jugador1                                                        0x0013A     42
+validar_izquierda_jugador2                                                        0x00164     41
+validar_derecha_jugador2                                                          0x0018D     44
+valida                                                                            0x001B9     56
+mostrar_puntaje                                                                   0x001F1     13
