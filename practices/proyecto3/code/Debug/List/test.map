@@ -1,0 +1,60 @@
+RAM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+bc                                                                                0x00E0       2
+j1c1                                                                              0x00E2       2
+j1c2                                                                              0x00E4       2
+j2c1                                                                              0x00E6       2
+j2c2                                                                              0x00E8       2
+filj1                                                                             0x00EA       2
+filj2                                                                             0x00EC       2
+contador                                                                          0x00EE       2
+bdaj1                                                                             0x00F0       2
+bdpj1                                                                             0x00F2       2
+biaj1                                                                             0x00F4       2
+bipj1                                                                             0x00F6       2
+bdaj2                                                                             0x00F8       2
+bdpj2                                                                             0x00FA       2
+biaj2                                                                             0x00FC       2
+bipj2                                                                             0x00FE       2
+_base_y (alcd.lib)                                                                0x0100       4
+_lcd_x                                                                            0x0104       1
+_lcd_y                                                                            0x0105       1
+_lcd_maxx                                                                         0x0106       1
+
+EEPROM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+
+Register Allocation
+Variable                                                                          Register  Size
+------------------------------------------------------------------------------------------------
+puntaje_p1                                                                        R4,R5        2
+puntaje_p2                                                                        R6,R7        2
+fila                                                                              R8,R9        2
+col                                                                               R10,R11      2
+bf                                                                                R12,R13      2
+
+FLASH Allocation [words]
+Function                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+main                                                                              0x0007D     91
+fila_cambio                                                                       0x000D8     30
+cambiar_columna                                                                   0x000F6     42
+validar_derecha_jugador1                                                          0x00120     41
+validar_izquierda_jugador1                                                        0x00149     42
+validar_izquierda_jugador2                                                        0x00173     41
+validar_derecha_jugador2                                                          0x0019C     45
+valida                                                                            0x001C9     52
+mostrar_puntaje                                                                   0x001FD     15
+_lcd_write_nibble_G100                                                            0x0020C     28
+_lcd_write_data                                                                   0x00228     13
+lcd_gotoxy                                                                        0x00235     18
+lcd_clear                                                                         0x00247     16
+lcd_putchar                                                                       0x00257     30
+lcd_init                                                                          0x00275     43
+_print_G101                                                                       0x002A0    286
+put_lcd_G101                                                                      0x003BE     13
+lcd_printf                                                                        0x003CB     30
+strlen                                                                            0x003E9     12
+strlenf                                                                           0x003F5     13

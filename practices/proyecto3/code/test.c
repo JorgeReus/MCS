@@ -1,32 +1,7 @@
-/*******************************************************
-This program was created by the
-CodeWizardAVR V3.20 Evaluation
-Automatic Program Generator
-© Copyright 1998-2015 Pavel Haiduc, HP InfoTech s.r.l.
-http://www.hpinfotech.com
-
-Project : 
-Version : 
-Date    : 5/29/2016
-Author  : 
-Company : 
-Comments: 
-
-
-Chip type               : ATmega8535
-Program type            : Application
-AVR Core Clock frequency: 1.000000 MHz
-Memory model            : Small
-External RAM size       : 0
-Data Stack size         : 128
-*******************************************************/
-
+#include <mega8535.h>
+#include <alcd.h>
 #include <io.h>
 #include <delay.h>
-
-#define PSWITCH PINB.4
-
-int tabla7seg [10]={~0x3f,~0x06,~0x5b,~0x4f,~0x66,~0x6d,~0x7c,~0x07,~0x7f,~0x6f};
 
 void validar_derecha_jugador1(void);
 void validar_izquierda_jugador1(void);
@@ -58,8 +33,6 @@ int bdaj2;
 int bdpj2;
 int biaj2;
 int bipj2;
-
-
 
 void main(void)
 {
@@ -98,6 +71,18 @@ void main(void)
     SPCR=(0<<SPIE) | (0<<SPE) | (0<<DORD) | (0<<MSTR) | (0<<CPOL) | (0<<CPHA) | (0<<SPR1) | (0<<SPR0);
     TWCR=(0<<TWEA) | (0<<TWSTA) | (0<<TWSTO) | (0<<TWEN) | (0<<TWIE);
 
+    // Alphanumeric LCD initialization
+    // Connections are specified in the
+    // Project|Configure|C Compiler|Libraries|Alphanumeric LCD menu:
+    // RS - PORTA Bit 0
+    // RD - PORTA Bit 1
+    // EN - PORTA Bit 2
+    // D4 - PORTA Bit 3
+    // D5 - PORTA Bit 4
+    // D6 - PORTA Bit 5
+    // D7 - PORTA Bit 6
+    // Characters/line: 16
+    lcd_init(12);
     while (1)
     {
         mostrar_puntaje();
@@ -129,7 +114,7 @@ void main(void)
           valida();  
         }    
       }
-}
+    }
 
 
 void fila_cambio()
@@ -158,7 +143,6 @@ void fila_cambio()
 
 void cambiar_columna()
 {
-   
     if(bc==0)
     {
         if(col<16)
@@ -180,84 +164,76 @@ void cambiar_columna()
             col*=2;
         }
     }
-
 }
 
 void validar_derecha_jugador1()
-{
-    
-        
-        if (PINB.0==0)
-            bdaj1=0;
-        else
-            bdaj1=1;
-        if ((bdaj1==0)&&(bdpj1==1)) //hubo cambio de flanco de 1 a 0
-            {
-                if(j1c1<8)
-                {
-                    j1c1*=2;
-                    j1c2=j1c1*2;
-                }
-            }
-       bdpj1 = bdaj1;
-        
-        
+{ 
+    if (PINB.0==0)
+        bdaj1=0;
+    else
+        bdaj1=1;
+    if ((bdaj1==0)&&(bdpj1==1)) //hubo cambio de flanco de 1 a 0
+    {
+        if(j1c1<8)
+        {
+            j1c1*=2;
+            j1c2=j1c1*2;
+        }
+    }
+    bdpj1 = bdaj1;      
 }
 
 void validar_izquierda_jugador1()
 {
-    
      if (PINB.1==0)
-            biaj1=0;
-        else
-            biaj1=1;
+        biaj1=0;
+     else
+        biaj1=1;
         if ((biaj1==0)&&(bipj1==1)) //hubo cambio de flanco de 1 a 0
+        {
+            if(j1c1>1)
             {
-                if(j1c1>1)
-                {
-                    j1c1/=2;
-                    j1c2=j1c1*2;
+                j1c1/=2;
+                j1c2=j1c1*2;
                     
-                }
             }
+        }
        bipj1 = biaj1;
 }
 
 void validar_izquierda_jugador2()
 {
-    
     if (PINB.2==0)
-            biaj2=0;
-        else
-            biaj2=1;
-        if ((biaj2==0)&&(bipj2==1)) //hubo cambio de flanco de 1 a 0
-            {
-                if(j2c1>1)
-                {
-                    j2c1/=2;
-                    j2c2=j2c1*2;
-                }
-            }
-       bipj2 = biaj2;
-        
+        biaj2=0;
+    else
+        biaj2=1;
+    if ((biaj2==0)&&(bipj2==1)) //hubo cambio de flanco de 1 a 0
+    {
+        if(j2c1>1)
+        {
+            j2c1/=2;
+            j2c2=j2c1*2;
+        }
+    }
+    bipj2 = biaj2;   
 }
 
 void validar_derecha_jugador2()
 {
     
-     if (PINB.3==0)
-            bdaj2=0;
-        else
-            bdaj2=1;
-        if ((bdaj2==0)&&(bdpj2==1)) //hubo cambio de flanco de 1 a 0
-            {
-                if(j2c1<8)
-                {
-                    j2c1*=2;
-                    j2c2=j2c1*2;
-                }
-            }
-       bdpj2 = bdaj2;
+    if (PINB.3==0)
+        bdaj2=0;
+    else
+        bdaj2=1;
+    if ((bdaj2==0)&&(bdpj2==1)) //hubo cambio de flanco de 1 a 0
+    {
+        if(j2c1<8)
+        {
+            j2c1*=2;
+            j2c2=j2c1*2;
+        }
+    }
+   bdpj2 = bdaj2;
 }
 
 void valida()
@@ -270,14 +246,6 @@ void valida()
             puntaje_p1++;
             if(puntaje_p1==5)
             {     
-                PORTA = tabla7seg[puntaje_p1];
-                PORTC.5 = 1;
-                PORTC.6 = 0;
-                delay_ms(200);
-                PORTA = tabla7seg[puntaje_p2];
-                PORTC.5 = 0;
-                PORTC.6 = 1;
-                delay_ms(200);
                 puntaje_p1=0;
                 puntaje_p2=0; 
             }
@@ -292,14 +260,6 @@ void valida()
             puntaje_p2++;
             if(puntaje_p2==5)
             {
-                PORTA = tabla7seg[puntaje_p1];
-                PORTC.5 = 1;
-                PORTC.6 = 0;
-                delay_ms(200);
-                PORTA = tabla7seg[puntaje_p2];
-                PORTC.5 = 0;
-                PORTC.6 = 1;
-                delay_ms(200);
                 puntaje_p1=0;
                 puntaje_p2=0; 
             }
@@ -310,14 +270,7 @@ void valida()
 
 void mostrar_puntaje()
 {
-    if (PSWITCH ==1 ) {
-      PORTA = tabla7seg[puntaje_p1];
-      PORTC.5 = 1;
-      PORTC.6 = 0;
-    } else {
-       PORTA = tabla7seg[puntaje_p2];
-        PORTC.5 = 0;
-        PORTC.6 = 1;
-    }
-    delay_ms(5);
+    lcd_gotoxy(0,0); 
+    lcd_printf("Player 1:  %d", puntaje_p1);
+    lcd_printf("Player 2:  %d", puntaje_p2);
 }
